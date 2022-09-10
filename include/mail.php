@@ -18,12 +18,12 @@
        }
        else{
         
-        $con = new mysqli('localhost', 'root', '', 'mail');
+        $con = new mysqli('localhost', 'root', '', 'signup');
         if($con->connect_error){
             die('connection failed').$con->connect_error();
         }
         
-        $stmt = $con->prepare('INSERT INTO CUSTOM(NAME, EMAIL, POSTAL) VALUES(?, ?, ?)');
+        $stmt = $con->prepare('INSERT INTO USER(NAME, EMAIL, ZIP) VALUES(?, ?, ?)');
         $stmt->bind_param("ssi", $name, $email, $zip);
         $stmt->execute();
         $stmt->close();
